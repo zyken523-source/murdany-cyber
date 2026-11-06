@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MURDANY CYBER // Threat Intel</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #05020a; /* Hitam keunguan */
+    --panel: #0f081a; 
+    --neon: #d946ef; /* Ungu Neon */
+    --neon-dim: #86198f;
+    --text: #f5d0fe; /* Teks ungu muda */
+    --danger: #ff3366; 
+    --mono: 'Share Tech Mono', monospace; 
+    --display: 'Orbitron', sans-serif;
+  }
+  body {
+    background-color: var(--bg); color: var(--text); font-family: var(--mono);
+    margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center;
+    /* Efek Grid Ungu */
+    background-image: linear-gradient(rgba(217,70,239,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(217,70,239,0.05) 1px, transparent 1px);
+    background-size: 25px 25px;
+  }
+  .container { width: 100%; max-width: 800px; }
+  
+  /* Styling Judul */
+  h1 { 
+    font-family: var(--display); color: #fff; text-align: center; 
+    text-shadow: 0 0 10px var(--neon), 0 0 20px var(--neon); 
+    margin-bottom: 5px;
+  }
+  p.subtitle { text-align: center; color: var(--neon-dim); margin-bottom: 25px; font-size: 0.9rem; letter-spacing: 2px; }
+
+  /* Styling Gambar Avatar */
+  .avatar-container {
+    display: flex; justify-content: center; margin-bottom: 25px;
+  }
+  .avatar-container img {
+    width: 200px; height: 200px; object-fit: cover; border-radius: 50%;
+    border: 3px solid var(--neon);
+    box-shadow: 0 0 20px var(--neon), inset 0 0 10px var(--neon);
+    background-color: #000;
+  }
+  
+  /* Panel Box */
+  .panel {
+    background: var(--panel); border: 1px solid var(--neon-dim); border-radius: 10px;
+    padding: 20px; margin-bottom: 20px; box-shadow: 0 0 20px rgba(217,70,239,0.15);
+    position: relative;
+  }
+  
+  .input-group { display: flex; gap: 10px; }
+  input[type="text"] {
+    flex: 1; background: #000; border: 1px solid var(--neon-dim); color: var(--text);
+    padding: 15px; font-family: var(--mono); font-size: 1rem; outline: none;
+    border-radius: 5px; transition: 0.3s;
+  }
+  input[type="text"]:focus { 
+    border-color: var(--neon); 
+    box-shadow: inset 0 0 10px rgba(217,70,239,0.3), 0 0 10px rgba(217,70,239,0.2); 
+  }
+  
+  button {
+    background: transparent; border: 1px solid var(--neon); color: var(--neon);
+    padding: 0 20px; font-family: var(--display); font-weight: bold; cursor: pointer;
+    border-radius: 5px; transition: all 0.3s; text-shadow: 0 0 5px var(--neon);
+  }
+  button:hover { background: var(--neon); color: #fff; box-shadow: 0 0 20px var(--neon); }
+  button:disabled { border-color: #333; color: #333; cursor: not-allowed; text-shadow: none; }
+  
+  /* Terminal ala Hacker */
+  .terminal {
+    background: #020005; border: 1px solid var(--neon-dim); padding: 15px; border-radius: 5px;
+    font-family: var(--mono); font-size: 0.9rem; min-height: 200px; white-space: pre-wrap;
+    color: var(--text); overflow-x: auto; line-height: 1.5; margin-top: 20px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,1);
+  }
+  .blink { animation: blink 1s step-end infinite; color: var(--neon); }
+  @keyframes blink { 50% { opacity: 0; } }
+  
+  /* Footer */
+  .footer {
+    text-align: center; margin-top: 40px; padding-bottom: 20px;
+    color: var(--neon-dim); font-family: var(--display); font-size: 0.8rem;
+    letter-spacing: 3px;
+  }
+  .footer span { color: var(--neon); text-shadow: 0 0 10px var(--neon); }
+  .warning { color: var(--danger); font-size: 0.75rem; text-align: center; margin-top: 15px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>MURDANY CYBER</h1>
+  <p class="subtitle">THREAT INTELLIGENCE ENGINE</p>
+
+  <!-- BAGIAN GAMBAR WANITA -->
+  <div class="avatar-container">
+    <!-- Ganti tulisan 'avatar.jpg' dengan nama file gambar Anda nanti -->
+    <img src="avatar.jpg" alt="MURDANY Avatar" onerror="this.src='https://via.placeholder.com/200/0f081a/d946ef?text=MURDANY'">
+  </div>
+
+  <div class="panel">
+    <label style="display:block; margin-bottom: 10px; color:var(--neon); font-size:0.85rem;">TARGET URL / DOMAIN:</label>
+    <div class="input-group">
+      <input type="text" id="targetUrl" placeholder="https://link-scammer.com/..." autocomplete="off">
+      <button id="scanBtn">ANALYZE</button>
+    </div>
+    
+    <div class="terminal" id="terminal">
+> System Ready.
+> Awaiting target URL...<span class="blink">_</span>
+    </div>
+  </div>
+
+  <div class="warning">
+    ⚠️ ALAT INI HANYA UNTUK MELAPORKAN PENIPUAN (OSINT).
+  </div>
+  
+  <div class="footer">
+    CREATED BY <span>MURDANY</span>
+  </div>
+</div>
+
+<script>
+  // SEMENTARA DIKOSONGKAN UNTUK TES CANGKANG
+  const API_URL = ''; 
+
+  const btn = document.getElementById('scanBtn');
+  const input = document.getElementById('targetUrl');
+  const terminal = document.getElementById('terminal');
+
+  btn.addEventListener('click', async () => {
+    const target = input.value.trim();
+    if(!target) return alert("Masukkan link atau domain!");
+
+    terminal.innerHTML = `> Target acquired: ${target}\n> Initiating OSINT scan...\n> Please wait...<span class="blink">_</span>`;
+    btn.disabled = true;
+
+    if(!API_URL) {
+      setTimeout(() => {
+        terminal.innerHTML = `> [ERROR] Backend API belum diset!\n> Tampilan Cangkang (Neon Purple) Berhasil!\n> by MURDANY`;
+        btn.disabled = false;
+      }, 1500);
+      return;
+    }
+  });
+
+  input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') btn.click();
+  });
+</script>
+</body>
+  </html>
